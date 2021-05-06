@@ -74,10 +74,10 @@ public class FoodOrderServiceImpl implements FoodOrderService {
 
 	private void updateFoodQtyInFoodOrder(List<FoodDto> foods, FoodDto food, String updateType) {
 		for (FoodDto foodInDb : foods) {
-			if (foodInDb.getId() == food.getId()
+			if (foodInDb.getFoodId() == food.getFoodId()
 					&& updateType.equalsIgnoreCase(OrderConstants.REQUEST_UPDATE_TYPE_INCREASE_QTY)) {
 				foodInDb.setQty(food.getQty() + foodInDb.getQty());
-			} else if (foodInDb.getId() == food.getId()
+			} else if (foodInDb.getFoodId() == food.getFoodId()
 					&& updateType.equalsIgnoreCase(OrderConstants.REQUEST_UPDATE_TYPE_DECREASE_QTY)) {
 				foodInDb.setQty(foodInDb.getQty() - food.getQty());
 			}
@@ -96,7 +96,7 @@ public class FoodOrderServiceImpl implements FoodOrderService {
 					throw new InsuffecientQtyException("Insufficient Qty please check Qty");
 				}
 			}
-			food2 = manageUtil.updateFoodQtyByFoodId(food);
+			manageUtil.updateFoodQtyByFoodId(food);
 			if (food2 == null) {
 				status = false;
 			}

@@ -55,6 +55,44 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+			    <groupId>org.jacoco</groupId>
+			    <artifactId>jacoco-maven-plugin</artifactId>
+			    <configuration>
+				    <excludes>
+				    	<exclude>**/*OrderManagementController.*</exclude>
+				    	<exclude>**/*OrderManagementHandler.*</exclude>
+				    	<exclude>**/*ErrorDto.*</exclude>
+				    	<exclude>**/*ResponseBody.*</exclude>
+				        <exclude>**/*FoodDto.*</exclude>
+				        <exclude>**/*OrderMAnagementConfig.*</exclude>
+				        <exclude>**/*OrderConstants.*</exclude>
+				        <exclude>**/*FoodOrder.*</exclude>
+				        <exclude>**/*PaymentDetail.*</exclude>
+				        <exclude>**/*OrderMAnagementUtil.*</exclude>
+				        <exclude>**/*OrderManagementServiceException.*</exclude>
+				        <exclude>**/*ManageOrderServiceException.*</exclude>
+				        <exclude>**/*CancelOrderException.*</exclude>
+				        <exclude>**/*InsuffecientQtyException.*</exclude>
+				        <exclude>**/*OrderNotFoundException.*</exclude>
+				        <exclude>**/*PaymentFailedException.*</exclude>
+				    </excludes>
+				</configuration>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>prepare-agent</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>report</id>
+			            <phase>prepare-package</phase>
+			            <goals>
+			                <goal>report</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
 		</plugins>
 	</build>
 
